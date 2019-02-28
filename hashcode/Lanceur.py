@@ -3,6 +3,7 @@
 from Photo import Photo
 from Algo import Algo
 import copy
+import datetime
 import math
 import time
 import sys
@@ -11,6 +12,7 @@ class Lanceur:
     def __init__(self,fichier):
 
     
+        self.fichierBrute = fichier
         self.fichier = "./inputs/" + fichier + ".txt"
         print("fichier",self.fichier)
         self.listePhotos = []
@@ -32,7 +34,7 @@ class Lanceur:
 
     def fichierSortie(self, slides):
         print("fichierSortie")
-        fichier = open("outputs/"+self.fichier+"_"+now.second + ".out", "w")
+        fichier = open("outputs/"+self.fichierBrute+"_"+str(time.time()) + ".out", "w")
 
         fichier.write(str(len(slides))+"\n")
         for slide in slides:
