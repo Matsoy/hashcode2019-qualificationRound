@@ -28,25 +28,18 @@ class Lanceur:
                 photoParams = f.readline().split(" ")
                 self.listePhotos.append(Photo(i, photoParams[2:], photoParams[0]))
 
-    # def fichierSortie(self):
-    #     print("fichierSortie")
+    def fichierSortie(self, slides):
+        print("fichierSortie")
+        fichier = open("outputs/"+self.fichier+"_"+now.second + ".out", "w")
 
+        fichier.write(str(len(slides))+"\n")
+        for slide in slides:
+            fichier.write(str(slide.photo1))
+            if slide.photo1 is not None:
+                fichier.write(" "+str(slide.photo2))
+            fichier.write("\n")
 
-    #     # Pour eviter les duplications dans le fichier de sortie, dans le cas ou une seule prise de photo a permis d'avancer plusieurs collections
-    #     listePointsPris = []
-    #     # Parcours de toutes les coordonnees des collections validees
-    #     for collect in self.listeCollectionValidee:
-    #         for coord in collect.listeCoordonneesReussies:
-    #             # Si les coordonnees du point ne sont pas dans listePointsPris, alors on les rajoute a la liste
-    #             if not coord in listePointsPris:
-    #                 listePointsPris.append(coord)
-
-    #     fichier = open("fichierSortie.out", "w")
-    #     # Ecriture du nombre total de coordonnees
-    #     fichier.write(str(len(listePointsPris))+"\n")
-    #     for coord in listePointsPris:
-    #         fichier.write(str(coord[0])+ " " + str(coord[1]) + " " + str(coord[2]) + " " + str(coord[3]) + "\n")
-    #     fichier.close()
+        fichier.close()
 
 
     def lancerSimulation(self) :
