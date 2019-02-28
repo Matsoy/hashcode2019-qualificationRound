@@ -1,21 +1,14 @@
 from operator import itemgetter
 
-nbPhoto=100;
-slides # list de photos
-res=[]
-
-
-def combineTout(slides):
-    scoreCombine=[]
-    for photoP in range(len(slides)-1):
-      for photoE in range(photoP, len(slides)-1):
-          score = getScorePhoto()
-          scoreCombine.append((slides[photoP], slides[photoE], res)
-    return scoreCombine
-
-
-
-scoreCombine.sort(key=itemgetter(2), reverse=False)
-res.append(scoreCombine[0])
-
-for r in scoreCombine:
+class Slide:
+    def __init__(self,photo1,photo2):
+        self.photo1 = photo1
+        self.photo2 = photo2
+        print("test")
+        if self.photo2 is not None:
+            print(photo1.tagList,photo2.tagList)
+            self.tags = list(set(photo1.tagList+photo2.tagList))
+            print(self.tags)
+        else:
+            self.t = "tutu"
+            self.tags = photo1.tagList
