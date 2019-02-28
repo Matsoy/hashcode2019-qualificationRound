@@ -11,12 +11,12 @@ import sys
 class Lanceur:
     def __init__(self,fichier):
 
-    
+
         self.fichierBrute = fichier
         self.fichier = "./inputs/" + fichier + ".txt"
         print("fichier",self.fichier)
         self.listePhotos = []
-        
+
         self.lectureFichier()
         # self.lancerSimulation()
 
@@ -38,9 +38,9 @@ class Lanceur:
 
         fichier.write(str(len(slides))+"\n")
         for slide in slides:
-            fichier.write(str(slide.photo1))
-            if slide.photo1 is not None:
-                fichier.write(" "+str(slide.photo2))
+            fichier.write(str(slide.photo1.id))
+            if slide.photo2 is not None:
+                fichier.write(" "+str(slide.photo2.id))
             fichier.write("\n")
 
         fichier.close()
@@ -59,4 +59,3 @@ l = Lanceur(sys.argv[1])
 print("==============> Fin simulation")
 
 a = Algo(l)
-

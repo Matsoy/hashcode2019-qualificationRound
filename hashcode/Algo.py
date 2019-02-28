@@ -14,9 +14,13 @@ class Algo:
         print(len(lanceur.listePhotos))
         self.lanceur = lanceur
         self.generateVerticalPair()
-        scoreCombine = combineTout(lanceur.listePhotos)
+        # for o in self.listeSlides:
+            # print(o.id)
+        (scoreCombine, listIdSlide) = combineTout(self.listeSlides)
         scoreCombine.sort(key=itemgetter(2), reverse=True)
-        diapo = createSlideShow(lanceur.listePhotos, scoreCombine, scoreCombine[0][0])
+        listIdSlide.remove(scoreCombine[0][0].id)
+        listIdSlide.remove(scoreCombine[0][1].id)
+        diapo = createSlideShow(scoreCombine, scoreCombine[0],listIdSlide,[scoreCombine[0][0],scoreCombine[0][1]])
         # res = sortList(scoreCombine)
         # for i in diapo:
         #     print(i)

@@ -4,11 +4,9 @@ class Slide:
     def __init__(self,photo1,photo2):
         self.photo1 = photo1
         self.photo2 = photo2
-        print("test")
+        self.id=str(photo1.id)
         if self.photo2 is not None:
-            print(photo1.tagList,photo2.tagList)
             self.tags = list(set(photo1.tagList+photo2.tagList))
-            print(self.tags)
+            self.id+="_"+str(photo2.id)
         else:
-            self.t = "tutu"
             self.tags = photo1.tagList
