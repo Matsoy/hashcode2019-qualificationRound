@@ -26,6 +26,7 @@ class Lanceur:
             nbPhotos = int(f.readline())
             for i in range(0, nbPhotos):
                 photoParams = f.readline().split(" ")
+                del photoParams[-1]
                 self.listePhotos.append(Photo(i, photoParams[2:], photoParams[0]))
 
     def fichierSortie(self, slides):
