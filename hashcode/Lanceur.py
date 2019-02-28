@@ -1,6 +1,7 @@
 # from Temps import Temps
 # from Collection import Collection
 from Photo import Photo
+from Algo import Algo
 import copy
 import math
 import time
@@ -57,6 +58,8 @@ class Lanceur:
 
 # initialisation d'un objet de type Lanceur
 print("==============> Debut simulation")
-Lanceur(sys.argv[1])
+l = Lanceur(sys.argv[1])
 print("==============> Fin simulation")
+
+a = Algo(l)
 
