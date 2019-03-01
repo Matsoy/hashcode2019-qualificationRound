@@ -4,7 +4,8 @@ import math
 import time
 import sys
 from fctSlides import *
-
+from horizontalConbining import *
+from scoring import countScoring
 from Slide import Slide
 
 class Algo:
@@ -24,6 +25,14 @@ class Algo:
         # res = sortList(scoreCombine)
         # for i in diapo:
         #     print(i)
+        #Get score
+        precSlide = None
+        score = 0
+        for slide in diapo:
+            if precSlide is not None:
+                score = score + countScoring(precSlide.tags,slide.tags)
+            precSlide = slide
+        print("score : ",score)
         self.lanceur.fichierSortie(diapo)
 
 
@@ -45,10 +54,7 @@ class Algo:
                     listSlide.append(slide)
         #All horizontal slide are created
         #need now to select all vertical pair
-        listSlide.sort(key=lambda slide: len(slide.tags),reverse=True)
+        returnSlides = conbiningNaif(listSlide,allVerticalId)
 
-        for slide in listSlide:
-            if slide.photo1.id in allVerticalId and slide.photo2.id in allVerticalId:
-                self.listeSlides.append(slide)
-                allVerticalId.remove(slide.photo1.id)
-                allVerticalId.remove(slide.photo2.id)
+        for slide in returnSlides:
+            self.listeSlides.append(slide)

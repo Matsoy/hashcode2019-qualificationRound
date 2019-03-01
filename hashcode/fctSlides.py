@@ -40,6 +40,7 @@ def createSlideShow(sortedArray, firstSlide,listIdSlide,diapo):
         else:
             continue
         createSlideShow(sortedArray, slideToPass,listIdSlide,diapo)
+        break
     return diapo
 
 def determine(diapo, search, emt):
