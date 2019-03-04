@@ -9,20 +9,15 @@ import time
 import sys
 
 class Lanceur:
+    
     def __init__(self,fichier):
-
-
         self.fichierBrute = fichier
-        self.fichier = "./inputs/" + fichier + ".txt"
-        print("fichier",self.fichier)
+        self.fichier = "inputs/" + fichier + ".txt"
         self.listePhotos = []
-
         self.lectureFichier()
-        # self.lancerSimulation()
 
     def lectureFichier(self):
-        print("lectureFichier")
-
+        print("lectureFichier : " + self.fichier)
 
         with open(self.fichier,'r') as f:
             nbPhotos = int(f.readline())
@@ -32,9 +27,10 @@ class Lanceur:
                 # del photoParams[-1]
                 self.listePhotos.append(Photo(i, photoParams[2:], photoParams[0]))
 
-    def fichierSortie(self, slides):
-        print("fichierSortie")
-        fichier = open("outputs/"+self.fichierBrute+"_"+str(time.time()) + ".out", "w")
+    def fichierSortie(self, slides, score):
+        path = "outputs/"+self.fichierBrute+"_"+str(score)+"_"+str(time.time())+".out"
+        print("fichierSortie : " + path)
+        fichier = open(path, "w")
 
         fichier.write(str(len(slides))+"\n")
         for slide in slides:
@@ -46,16 +42,8 @@ class Lanceur:
         fichier.close()
 
 
-    def lancerSimulation(self) :
-        """
-        Lancement de la simulation
-        """
-
-
 
 # initialisation d'un objet de type Lanceur
-print("==============> Debut simulation")
 l = Lanceur(sys.argv[1])
-print("==============> Fin simulation")
 
 a = Algo(l)

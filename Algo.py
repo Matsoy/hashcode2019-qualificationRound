@@ -12,7 +12,7 @@ class Algo:
     def __init__(self,lanceur):
         self.lanceur = lanceur
 
-        print(len(lanceur.listePhotos))
+        print(str(len(lanceur.listePhotos)) + " photos")
         self.lanceur = lanceur
         self.generateVerticalPair()
         # for o in self.listeSlides:
@@ -33,7 +33,7 @@ class Algo:
                 score = score + countScoring(precSlide.tags,slide.tags)
             precSlide = slide
         print("score : ",score)
-        self.lanceur.fichierSortie(diapo)
+        self.lanceur.fichierSortie(diapo, score)
 
 
     def generateVerticalPair(self):
